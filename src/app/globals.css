@@ -193,3 +193,12 @@ path.link {
     transition: 0.5s ease-in-out;
     color: red;
   }
+  .uploadCard{
+    transition: 0.5s ease-in-out;
+  }
+  .uploadCard:hover{
+    
+    background-color: rgba(163, 159, 159, 0.082);
+  }
+
+  

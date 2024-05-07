@@ -1,9 +1,7 @@
-import { IncomingMessage, ServerResponse } from "http";
 import { NextRequest, NextResponse } from "next/server";
-import formidable from "formidable";
+import Financial from "@/lib/models/financial.model";
 import clientPromise from "@/lib/mongoose";
 import * as xlsx from "xlsx";
-import Financial from "@/lib/models/financial.model";
 
 export async function POST(req: NextRequest, res: NextResponse) {
   try {
@@ -11,38 +9,30 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
     const formdatas = await req.formData();
     const file: any = formdatas.get("file");
-
     if (!file) {
       return NextResponse.json({ message: "File not found" });
     }
 
-    // const file = req.files.file;
     const newdata = Buffer.from(await file.arrayBuffer());
     const workbook = xlsx.read(newdata, { type: "buffer" });
     const sheet = workbook.Sheets[workbook.SheetNames[0]];
     const sheetData: any = xlsx.utils.sheet_to_json(sheet, { header: 1 });
     const tempArray = [];
-
     const headerLength = sheetData[0].length;
+
 
     for (let i = 1; i < sheetData.length; i++) {
       const row = sheetData[i];
       if (row.length !== headerLength) {
         tempArray.push(row);
-
-      } 
-      else {
+      } else {
         const date = new Date((parseInt(row[5]) - 25569) * 86400 * 1000);
-
         const year = date.getFullYear();
         const month = date.getMonth() + 1;
         const day = date.getDate();
-        const addLeadingZero = (num: number): string => {
-          return num < 10 ? `0${num}` : `${num}`;
-        };
-        const formattedDate = `${year}-${addLeadingZero(
-          month
-        )}-${addLeadingZero(day)}`;
+
+        const addLeadingZero = (num: number): string => {return num < 10 ? `0${num}` : `${num}`;};
+        const formattedDate = `${year}-${addLeadingZero( month )}-${addLeadingZero(day)}`;
 
         const document = {
           cost: row[0],
@@ -55,8 +45,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
         const data = new Financial(document);
         try {
-          // await data.save();
-         
+          await data.save();
         } catch (error) {
           console.error("Error saving data:", error);
         }
@@ -66,8 +55,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     return NextResponse.json({
       message: "file uploaded successfully",
       status: "success",
-      errorArray:tempArray.length,
-    
+      errorData: tempArray.length,
     });
   } catch (error) {
     console.error(error);
