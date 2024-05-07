@@ -37,7 +37,7 @@ const page = () => {
 
   return (
     <>
-      <div className="w-full h-[200vh] bg-white text-black relative">
+      <div className="w-full h-fit bg-white pb-[2rem] text-black relative">
         <Navbar />
 
         <p className="text-[2rem]  text-neutral-500 font-bold text-center">Finance</p>
