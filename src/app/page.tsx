@@ -73,7 +73,7 @@ if(!file){
         Upload File
       </p>
 
-      <div className="w-[22%] z-50 mx-auto border uploadCard h-[70%] rounded-lg flex flex-wrap relative ">
+      <div className="w-[22%] z-50 mx-auto border uploadCard h-[50vh] rounded-lg flex flex-wrap relative ">
         <div className="w-fit   flex flex-col gap-3 h-fit absolute top-0 bottom-0 left-0 right-0 m-auto">
           <div
             onClick={handlePopupInput}
