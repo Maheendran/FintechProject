@@ -1,13 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import image2 from "../../../public/register&login.png";
 import { message } from "antd";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import axios from 'axios'
 import Cookies from 'js-cookie';
-import Link from "next/link"
 import logo from "../../../public/logo.png";
 const page = () => {
     
