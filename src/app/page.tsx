@@ -73,14 +73,15 @@ if(!file){
         Upload File
       </p>
 
-      <div className="w-[22%] z-50 mx-auto border uploadCard h-fit rounded-lg flex flex-wrap relative ">
+      <div className="w-[22%] z-50 mx-auto border uploadCard h-[70%] rounded-lg flex flex-wrap relative ">
         <div className="w-fit   flex flex-col gap-3 h-fit absolute top-0 bottom-0 left-0 right-0 m-auto">
           <div
             onClick={handlePopupInput}
-            className={`${file? " border-green-400 bg-green-100/50":" border-violet-400 bg-white"} mx-auto w-[10rem]  h-[10rem] border-2
+            className={`${file? " border-green-400 bg-green-100/50":" border-violet-400 bg-white"} mx-auto 
+            w-[7rem]  h-[7rem] border-2
              border-violet-400 cursor-pointer rounded-full flex justify-center`}
           >
-            <FaFileAlt className="text-[3.5rem] text-black m-auto" />
+            <FaFileAlt className="text-[3rem] text-black m-auto" />
           </div>
           <p className="text-black text-center">{fileName}</p>
           <input
