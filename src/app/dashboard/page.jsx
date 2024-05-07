@@ -62,15 +62,16 @@ const page = () => {
           {graphLoading ? (
             <LoaderSpin />
           ) : (
-            <>
-              {graphOne?.formattedMonths.length === 0 ? (
-                <div className="w-full h-[60vh] border flex justify-center">
-                  <p className="text-black text-[1.4rem] m-auto">No data</p>
-                </div>
-              ) : (
-                <ChartComponent currentData={graphOne} />
-              )}
-            </>
+            // <>
+            //   {graphOne?.formattedMonths.length === 0 ? (
+            //     <div className="w-full h-[60vh] border flex justify-center">
+            //       <p className="text-black text-[1.4rem] m-auto">No data</p>
+            //     </div>
+            //   ) : (
+            //     <ChartComponent currentData={graphOne} />
+            //   )}
+            <ChartComponent currentData={graphOne} />
+            // </>
           )}
         </div>
 
@@ -82,22 +83,28 @@ const page = () => {
             <LoaderSpin />
           ) : (
 
-            <>
-            {Object.keys(graphTwoData['children']).length === 0 ? (
-              <div className="w-full h-[60vh] border flex justify-center">
-                <p className="text-black text-[1rem] m-auto">No data</p>
-              </div>
-            ) : (
-              <Tree
-              data={graphTwoData}
-              nodeRadius={100}
-              margins={{ top: 2, bottom: 20, left: 50, right: 100 }}
-              height={340}
-              width={700}
-            />
-            )}
-          </>
-           
+          //   <>
+          //   {Object.keys(graphTwoData['children']).length === 0 ? (
+          //     <div className="w-full h-[60vh] border flex justify-center">
+          //       <p className="text-black text-[1rem] m-auto">No data</p>
+          //     </div>
+          //   ) : (
+          //     <Tree
+          //     data={graphTwoData}
+          //     nodeRadius={100}
+          //     margins={{ top: 2, bottom: 20, left: 50, right: 100 }}
+          //     height={340}
+          //     width={700}
+          //   />
+          //   )}
+          // </>
+          <Tree
+          data={graphTwoData}
+          nodeRadius={100}
+          margins={{ top: 2, bottom: 20, left: 50, right: 100 }}
+          height={340}
+          width={700}
+        />
           )}
         </div>
       </div>
