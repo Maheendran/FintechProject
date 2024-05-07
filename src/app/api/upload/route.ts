@@ -21,32 +21,32 @@ export async function POST(req: NextRequest, res: NextResponse) {
     const headerLength = sheetData[0].length;
 
 
-    for (let i = 1; i < sheetData.length; i++) {
-      const row = sheetData[i];
-      if (row.length !== headerLength) {
-        tempArray.push(row);
-      } else {
-        const date = new Date((parseInt(row[5]) - 25569) * 86400 * 1000);
-        const year = date.getFullYear();
-        const month = date.getMonth() + 1;
-        const day = date.getDate();
+    // for (let i = 1; i < sheetData.length; i++) {
+    //   const row = sheetData[i];
+    //   if (row.length !== headerLength) {
+    //     tempArray.push(row);
+    //   } else {
+    //     const date = new Date((parseInt(row[5]) - 25569) * 86400 * 1000);
+    //     const year = date.getFullYear();
+    //     const month = date.getMonth() + 1;
+    //     const day = date.getDate();
 
-        const addLeadingZero = (num: number): string => {return num < 10 ? `0${num}` : `${num}`;};
-        const formattedDate = `${year}-${addLeadingZero( month )}-${addLeadingZero(day)}`;
+    //     const addLeadingZero = (num: number): string => {return num < 10 ? `0${num}` : `${num}`;};
+    //     const formattedDate = `${year}-${addLeadingZero( month )}-${addLeadingZero(day)}`;
 
-        const document = {
-          cost: row[0],
-          charity: row[1],
-          revenue: row[2],
-          profit: row[3],
-          category: row[4],
-          date: formattedDate,
-        };
+    //     const document = {
+    //       cost: row[0],
+    //       charity: row[1],
+    //       revenue: row[2],
+    //       profit: row[3],
+    //       category: row[4],
+    //       date: formattedDate,
+    //     };
 
-        const data = new Financial(document);
-        await data.save();
-      }
-    }
+    //     const data = new Financial(document);
+    //     await data.save();
+    //   }
+    // }
 
     return NextResponse.json({
       message: "file uploaded successfully",
