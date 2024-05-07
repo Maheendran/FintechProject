@@ -20,7 +20,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const totalCharityInMillion = graphTwo.reduce((total, item) => total + item.totalCharity, 0) / 1000000;
 
 
-    console.log(graphTwo, "graphTwo");
     const data = {
       name: `All charity - ${totalCharityInMillion} M`,
       textProps: { x: -25, y: 25 },
@@ -36,8 +35,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
 // ===============first grpah code============
 
 let dateChecheck = "%Y";
-// checkYear.split("-")
-const yearMonth:any = 2022;
+const yearMonth:any = 2023;
 
 let convertDate = new Date(parseInt(yearMonth), 1, 1);
 const grapOne=await Financial.aggregate([
@@ -60,7 +58,7 @@ const grapOne=await Financial.aggregate([
     }
   },
   {
-    $sort: { "_id": 1 } // Sort by _id in ascending order
+    $sort: { "_id": 1 } 
   }
 ])
 
@@ -85,9 +83,6 @@ grapOne.forEach(item => {
   totalRevenues.push(Math.round(item.totalRevenue));
 });
 
-
-
-    //   console.log(data,'graphTwo-------------')
 const graphOne:any={
   formattedMonths,totalProfits,totalRevenues
 }
