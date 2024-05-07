@@ -8,7 +8,7 @@ import FinanceTable from '@/components/financeTable/FinanceTable';
 const page = () => {
 
 const [currentPage, setCurrentPage] = useState(1);
-const itemsPerPage = 7;
+const itemsPerPage = 5;
 const[totalPages,setTotalPages]=useState(0)
 
 const[loading,setLoading]=useState(true)

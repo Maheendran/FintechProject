@@ -153,13 +153,13 @@ const page = () => {
         </div>
         {errorPopup && (
           <div
-            className="border z mx-auto rounded-lg bg-red-100/50 mt-[1.5rem] p-2 
+            className="border mx-auto rounded-lg bg-red-100/50 mt-[.75rem] p-1
 lg:w-[12%] h-fit  border-red-300 text-center"
           >
             <p className="text-[2rem] text-red-500 font-bold my-auto">
               {inCompleteData}
             </p>
-            <p className="text-[1.2rem] my-auto text-neutral-500">row error</p>
+            <p className="text-[1rem] my-auto text-neutral-500">row error</p>
             <p className="text-[0.8rem] my-auto text-neutral-500">
               missing some values <span className="text-red-400">*</span>{" "}
             </p>
