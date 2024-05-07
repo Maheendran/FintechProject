@@ -75,7 +75,7 @@ const page = () => {
               data={graphTwoData}
               nodeRadius={100}
               margins={{ top: 2, bottom: 20, left: 50, right: 100 }}
-              height={400}
+              height={340}
               width={800}
             />
           )}
