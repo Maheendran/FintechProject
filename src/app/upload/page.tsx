@@ -5,7 +5,7 @@ import { FaFileAlt } from "react-icons/fa";
 import { useRef, useState } from "react";
 import { message } from "antd";
 import axios from "axios";
-import Link from 'next/link'
+import Link from "next/link";
 const page = () => {
   const [fileName, setFileName] = useState("");
   const [messageApi, contextHolder] = message.useMessage();
@@ -40,16 +40,16 @@ const page = () => {
         });
         return;
       }
-  
+
       const formData = new FormData();
       formData.append("file", file);
       const response = await axios.post("/api/upload", formData);
       const status = response?.data?.status;
-  
+
       if (status === "success") {
         setInCompleteData(response?.data?.errorData);
         const errorCount = response?.data?.errorData;
-  
+
         if (errorCount > 0) {
           setErrorPopup(true);
           setTimeout(() => {
@@ -60,16 +60,16 @@ const page = () => {
           type: "success",
           content: "file uploaded successfully",
         });
-  
+
         // Reset state values
         setFile(null);
         setFileName("");
-  
+
         // Clear input field
         if (inputRef.current) {
           inputRef.current.value = "";
         }
-  
+
         setLoading(false);
       }
     } catch (error) {
@@ -77,7 +77,7 @@ const page = () => {
       console.log(error);
     }
   };
-  
+
   return (
     <>
       <div className="w-[100vw] h-screen bg-white ">
@@ -85,7 +85,7 @@ const page = () => {
           <Navbar />
         </div>
 
-        <p className="text-[2rem]  text-neutral-500 mb-2 font-bold text-center mt-[2rem]">
+        <p className="text-[2rem]  text-neutral-500 mb-2 font-bold text-center mt-[1.4rem]">
           Upload File
         </p>
         <div className="w-fit my-[1.4rem] mx-auto flex flex-end">
@@ -151,20 +151,18 @@ const page = () => {
             </button>
           </div>
         </div>
-        {errorPopup && (
+        {/* {errorPopup && ( */}
           <div
             className="border mx-auto rounded-lg bg-red-100/50 mt-[.75rem] p-1
-lg:w-[12%] h-fit  border-red-300 text-center"
+                 lg:w-[12%] h-fit  border-red-300 text-center"
           >
             <p className="text-[2rem] text-red-500 font-bold my-auto">
               {inCompleteData}
             </p>
             <p className="text-[1rem] my-auto text-neutral-500">row error</p>
-            <p className="text-[0.8rem] my-auto text-neutral-500">
-              missing some values <span className="text-red-400">*</span>{" "}
-            </p>
+          
           </div>
-        )}
+        {/* )} */}
       </div>
     </>
   );
