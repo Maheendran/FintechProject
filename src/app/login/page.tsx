@@ -47,6 +47,7 @@ const page = () => {
         const response = await axios.post('https://reqres.in/api/login', formData);
 
         const TokenValue=response?.data?.token
+    
         if(TokenValue){
          
             Cookies.set("Token", TokenValue, { expires: 7 });
@@ -93,27 +94,18 @@ const page = () => {
     <div className="w-full h-screen flex flex-col lg:flex-row overflow-hidden bg-white">
       {contextHolder}
       <div className="lg:w-[50%] h-[40%] lg:h-[100%] relative flex  overflow-hidden justify-end ">
-        <div className="absolute w-[100%]  top-0 right-0 h-[100%]">
-          <Image
-            priority={true}
-            className="w-[100%]  lg:flex h-[100%]"
-            src={image2}
-            alt=""
-          />
-      
-        </div>
+     
 
         <div className="w-[100%] flex flex-col p-[20px] sm:p-[40px] justify-between ">
           <div className=" flex lg:flex-col justify-end relative items-center w-[100%] h-[100%]">
-            <div className="flex  w-[100%]  h-[100%] absolute 
+            <div className="flex  w-[90%]  h-[70%] absolute 
              left-0 top-0  bottom-0 right-0 m-auto">
-           {/* <Image
+           <Image
             priority={true}
-            className="w-[70%]   z-10 h-[70%]"
+            className="w-[80%]  m-auto  z-10 h-[75%]"
             src={logo}
             alt=""
-          /> */}
-          <img src="https://fintechaera.org/wp-content/uploads/2017/11/cropped-Fintech-Aera_rechts_logo-01-2-1920x896.png" alt="" />
+          />
             </div>
           </div>
             
@@ -122,21 +114,19 @@ const page = () => {
 
       {/* second half */}
 
-      <div className="lg:w-[50%] h-[53%] relative xl:-left-[5%] lg:h-[100%]">
+      <div className="lg:w-[50%] h-[100%] relative xl:-left-[5%] lg:h-[100%] flex">
         <form
           onSubmit={handleLoginForm}
-          className="w-[100%] h-[100%] flex flex-col items-center justify-around "
+          className="w-[70%] border-2 uploadCard  md:h-[60vh]  rounded-lg   m-auto flex flex-col items-center justify-around "
         >
           {/* heading */}
-          <div className="text-purple-500 h-[10%] text-2xl md:text-4xl flex items-center font-medium font-['Poppins']">
+          <div className="text-indigo-900 text-[2.4rem]  flex items-center font-medium ">
             Login
           </div>
 
-          {/* input values */}
-          <div className="flex flex-col w-[80%] lg:p-[20px]  items-center h-[35%] rounded-[10px] ">
-            <div className="w-[90%] h-[100%] flex flex-col justify-around ">
+            <div className="w-[90%] h-fit flex flex-col  gap-4 justify-around  ">
               <div className="flex h-[80px]  justify-around flex-col text-black">
-                <label className="font-medium">Email id or Phone Number </label>
+                <label className="font-medium">Email id  </label>
                 <input
                   name="email"
                   type="email"
@@ -155,11 +145,8 @@ const page = () => {
                   onChange={(e) => handleInputChange(e)}
                 />
               </div>
-            </div>
-          </div>
 
-          {/* buttons */}
-          <div className=" text-black flex flex-col h-[20%]  justify-around items-center w-[90%]">
+              <div className=" text-black flex flex-col   justify-around items-center w-full">
             <button
               type="submit"
               disabled={isLoading}
@@ -175,7 +162,8 @@ const page = () => {
               )}
             </button>
           </div>
-        <Link href={'/'}>  <p className="text-black text-[1rem]">Home</p></Link>
+            </div>  
+
 
         </form>
       

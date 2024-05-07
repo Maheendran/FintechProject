@@ -72,12 +72,12 @@ if(!file){
   };
   return (
     <div className="w-full h-screen bg-white">
-      {contextHolder}
+   
       <Navbar />
       <p className="text-[3rem]  text-neutral-500 mb-2 font-bold text-center mt-[2rem]">
         Upload File
       </p>
-
+      {contextHolder}
       <div className="w-[22%] z-50 mx-auto border uploadCard h-[50vh] rounded-lg flex flex-wrap relative ">
         <div className="w-fit   flex flex-col gap-3 h-fit absolute top-0 bottom-0 left-0 right-0 m-auto">
           <div
