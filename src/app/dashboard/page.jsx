@@ -52,7 +52,7 @@ const page = () => {
           </Link>
           <Link
             className="text-[1rem] w-fit px-4 font-bold text-end "
-            href={"/charity-list"}
+            href={"/upload"}
           >
             <button className="px-4 py-2 button2 relative">Upload file</button>
           </Link>
@@ -65,7 +65,7 @@ const page = () => {
             <>
               {graphOne?.formattedMonths.length === 0 ? (
                 <div className="w-full h-[60vh] border flex justify-center">
-                  <p className="text-black ext-[1.4rem] m-auto">No data</p>
+                  <p className="text-black text-[1.4rem] m-auto">No data</p>
                 </div>
               ) : (
                 <ChartComponent currentData={graphOne} />
@@ -85,7 +85,7 @@ const page = () => {
             <>
             {graphOne?.formattedMonths.length === 0 ? (
               <div className="w-full h-[60vh] border flex justify-center">
-                <p className="text-black text-[1.4rem] m-auto">No data</p>
+                <p className="text-black text-[1rem] m-auto">No data</p>
               </div>
             ) : (
               <Tree
