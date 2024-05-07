@@ -50,7 +50,7 @@ handleGetFinData()
           </Link>
           <Link
             className="text-[1rem] w-fit px-4 font-bold text-end "
-            href={"/charity-list"}
+            href={"/upload"}
           >
             <button className="px-4 py-2 button2 relative">Upload file</button>
           </Link>
