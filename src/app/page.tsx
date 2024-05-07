@@ -4,16 +4,19 @@ import { useRef, useState } from "react";
 import { FaFileAlt } from "react-icons/fa";
 import axios from 'axios'
 import { message } from "antd";
+import FinanceTable from "@/components/financeTable/FinanceTable";
 export default function Home() {
   const[fileName,setFileName]=useState('')
   const [file, setFile] = useState('');
   const [messageApi, contextHolder] = message.useMessage();
-
+const[inCompleteData,setInCompleteData]=useState([])
+const [headerDetails,setHeaderDetails]=useState({})
   const handleExcelFile = (e: any) => {
     e.preventDefault();
     const filess=e.target?.files[0]
     setFile(e?.target?.files[0]);
     setFileName(filess.name)
+  
   };
  
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -37,6 +40,8 @@ export default function Home() {
     console.log(response.data,'aaaaaaaaaaaaaaaaaaa')
     const status=response?.data?.status
     if(status==="success")
+      setInCompleteData(response?.data?.errorArray)
+    setHeaderDetails(response?.data?.errorDetails)
       messageApi.open({
         type: "success",
         content: "file uploaded successfully",
@@ -73,6 +78,7 @@ export default function Home() {
           </button>
         </div>
       </div>
+      <FinanceTable inCompleteData={inCompleteData}/>
     </div>
   );
 }
