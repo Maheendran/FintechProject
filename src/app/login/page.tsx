@@ -152,7 +152,7 @@ const page = () => {
               disabled={isLoading}
               className="
                 
-                     bg-indigo-900  w-[30%] py-3 rounded-[60px] border  text-white flex items-center justify-around shadow  border-white 
+                     bg-indigo-900  w-[30%] py-2 rounded-[60px] border  text-white flex items-center justify-around shadow  border-white 
             "
             >
               {isLoading ? (
