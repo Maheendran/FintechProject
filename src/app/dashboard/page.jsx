@@ -33,7 +33,8 @@ const[graphLoading,setGraphLoading]=useState(true)
       }
     };
     handleGetFinData();
-  }, []);
+
+  });
 
   return (
     <>
