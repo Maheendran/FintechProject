@@ -45,7 +45,10 @@ if(!file){
       formData.append("file", file);
       const response = await axios.post("/api/upload", formData);
       const status = response?.data?.status;
-      if (status === "success") setInCompleteData(response?.data?.errorData);
+
+      if (status === "success"){
+
+          setInCompleteData(response?.data?.errorData);
       const errorCount = response?.data?.errorData;
 
       if (errorCount > 0) {
@@ -60,6 +63,8 @@ if(!file){
       });
       setFile("")
       setLoading(false);
+      }
+       
     } catch (error) {
       setLoading(false);
       console.log(error);
