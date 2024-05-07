@@ -107,12 +107,13 @@ const page = () => {
           <div className=" flex lg:flex-col justify-end relative items-center w-[100%] h-[100%]">
             <div className="flex  w-[100%]  h-[100%] absolute 
              left-0 top-0  bottom-0 right-0 m-auto">
-           <Image
+           {/* <Image
             priority={true}
             className="w-[70%]   z-10 h-[70%]"
             src={logo}
             alt=""
-          />
+          /> */}
+          <img src="https://fintechaera.org/wp-content/uploads/2017/11/cropped-Fintech-Aera_rechts_logo-01-2-1920x896.png" alt="" />
             </div>
           </div>
             

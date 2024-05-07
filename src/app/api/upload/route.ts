@@ -56,7 +56,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
       message: "file uploaded successfully",
       status: "success",
       errorData: tempArray.length,
-    });
+    },{status:200});
   } catch (error) {
     console.error(error);
     return NextResponse.json("Server error");
