@@ -5,7 +5,7 @@ import isAuthenticated from "./utils/isAuth";
 export async function middleware(request: NextRequest) {
   try {
     const authenticated = await isAuthenticated(request);
-    console.log(authenticated, "authenticated--");
+
     if (request.nextUrl.pathname.startsWith("/login")) {
       if (!authenticated) {
         return NextResponse.next();
@@ -13,7 +13,11 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL("/dashboard", request.url));
     }
 
-    if (request.nextUrl.pathname.startsWith("/dashboard")) {
+    if (
+      request.nextUrl.pathname.startsWith("/dashboard") ||
+      request.nextUrl.pathname.startsWith("/upload") ||
+      request.nextUrl.pathname.startsWith("/table")
+    ) {
       if (!authenticated) {
         return NextResponse.redirect(new URL("/login", request.url));
       }
@@ -31,5 +35,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/login", "/dashboard"],
+  matcher: ["/login", "/dashboard", "/upload"],
 };

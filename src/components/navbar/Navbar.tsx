@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <div className="w-full bg-white border text-black flex justify-between  h-[8.5vh]  relative">
       <div className="flex gap-3">
-        <div className="w-[3rem] h-full">
+        <div className="w-[7rem] h-full">
           <Image className="w-full h-full" src={logo} alt="logo" />
         </div>
         <div>
@@ -38,8 +38,7 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-      {/* right side */}
-      <div className="flex  px-4">
+      <div className="flex  relative px-4">
         {auth ? (
           <button
             className="my-auto flex gap-3  border-2  py-2  px-4 button2 relative  "
