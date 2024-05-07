@@ -25,7 +25,7 @@ const FinanceTable: React.FC<finDetailsProps> = ({
     <>
       <div className="w-[80%] h-fit mx-auto mt-[2rem]  rounded-lg overflow-hidden">
         {loading ? (
-          <div className="w-full h-[60vh] relative">
+          <div className="w-full h-[50vh] relative">
  <LoaderSpin/>
           </div>
        
