@@ -44,11 +44,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
         };
 
         const data = new Financial(document);
-        try {
-          await data.save();
-        } catch (error) {
-          console.error("Error saving data:", error);
-        }
+        await data.save();
       }
     }
 
