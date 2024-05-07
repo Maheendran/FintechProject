@@ -5,7 +5,7 @@ import { FaFileAlt } from "react-icons/fa";
 import { useRef, useState } from "react";
 import { message } from "antd";
 import axios from "axios";
-
+import Link from 'next/link'
 const page = () => {
   const [fileName, setFileName] = useState("");
   const [messageApi, contextHolder] = message.useMessage();
@@ -85,9 +85,24 @@ const page = () => {
           <Navbar />
         </div>
 
-        <p className="text-[3rem]  text-neutral-500 mb-2 font-bold text-center mt-[2rem]">
+        <p className="text-[2rem]  text-neutral-500 mb-2 font-bold text-center mt-[2rem]">
           Upload File
         </p>
+        <div className="w-fit my-[1.4rem] mx-auto flex flex-end">
+          <Link
+            className="text-[1rem] w-fit px-4 font-bold text-end"
+            href={"/dashboard"}
+          >
+            <button className="px-4 py-2 button2 relative">Finance</button>
+          </Link>
+          <Link
+            className="text-[1rem] w-fit px-4 font-bold text-end "
+            href={"/charity-list"}
+          >
+            <button className="px-4 py-2 button2 relative">Charity list</button>
+          </Link>
+        </div>
+
         {contextHolder}
         <div className="w-full md:w-[22%] z-50 mx-auto border uploadCard h-[50vh] rounded-lg flex flex-wrap relative ">
           <div className="w-fit   flex flex-col gap-3 h-fit absolute top-0 bottom-0 left-0 right-0 m-auto">

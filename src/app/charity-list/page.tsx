@@ -40,7 +40,7 @@ handleGetFinData()
     <div className='w-full h-screen bg-white  text-black border relative'>
         <Navbar/>
         
-        <p className="text-[3rem] font-bold text-center">Charity list</p>
+        <p className="text-[2rem]  text-neutral-500 font-bold text-center">Charity list</p>
         <div className="w-fit my-[1.4rem] mx-auto flex flex-end">
           <Link
             className="text-[1rem] w-fit px-4 font-bold text-end"

@@ -40,7 +40,7 @@ const page = () => {
       <div className="w-full h-[200vh] bg-white text-black relative">
         <Navbar />
 
-        <p className="text-[3rem] font-bold text-center">Finance</p>
+        <p className="text-[2rem]  text-neutral-500 font-bold text-center">Finance</p>
         <div className="w-fit my-[1.4rem] mx-auto flex flex-end">
           <Link
             className="text-[1rem] w-fit px-4 font-bold text-end"
@@ -76,7 +76,7 @@ const page = () => {
               nodeRadius={100}
               margins={{ top: 2, bottom: 20, left: 50, right: 100 }}
               height={340}
-              width={800}
+              width={700}
             />
           )}
         </div>
