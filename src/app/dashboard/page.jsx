@@ -83,7 +83,7 @@ const page = () => {
           ) : (
 
             <>
-            {graphTwoData.length === 0 ? (
+            {Object.keys(graphTwoData['children']).length === 0 ? (
               <div className="w-full h-[60vh] border flex justify-center">
                 <p className="text-black text-[1rem] m-auto">No data</p>
               </div>
