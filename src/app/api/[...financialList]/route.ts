@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-
 import clientPromise from "@/lib/mongoose";
 import Financial from "@/lib/models/financial.model";
 export async function GET(req: NextRequest, res: NextResponse) {

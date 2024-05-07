@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import clientPromise from "@/lib/mongoose";
-
 import Financial from "@/lib/models/financial.model";
-import { Aggregate } from "mongoose";
-import Item from "antd/es/list/Item";
+
 
 export async function GET(req: NextRequest, res: NextResponse) {
   try {
@@ -32,7 +30,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
         children: [],
       })),
     };
-// ===============first grpah code============
 
 let dateChecheck = "%Y";
 const yearMonth:any = 2023;
@@ -72,13 +69,9 @@ const monthsMap:any = {
   '09': 'September', '10': 'October', '11': 'November', '12': 'December'
 };
 grapOne.forEach(item => {
-  // Extract year and month from _id
   const [year, month] = item._id.split('-');
-  // Format month name
   const formattedMonth = `${monthsMap[month]} ${year}`;
-  // Push formatted month name to array
   formattedMonths.push(formattedMonth);
-  // Push total profit and total revenue to respective arrays
   totalProfits.push(Math.round(item.totalProfit));
   totalRevenues.push(Math.round(item.totalRevenue));
 });

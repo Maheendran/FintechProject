@@ -49,7 +49,7 @@ const page = () => {
         if(TokenValue){
          
             Cookies.set("Token", TokenValue, { expires: 7 });
-            
+            Cookies.set("Email", formData.email, { expires: 7 });
             messageApi.open({
                 type: "success",
                 content: "Login succesfully",

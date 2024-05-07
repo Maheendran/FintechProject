@@ -5,7 +5,6 @@ import Navbar from "@/components/navbar/Navbar";
 import Link from "next/link";
 import axios from "axios";
 import ChartComponent from "@/components/TreeChart/Page";
-import { TbLoader3 } from "react-icons/tb";
 import LoaderSpin from "@/components/loaderSpin/LoaderSpin";
 const page = () => {
   const [graphTwoData, setGraphTwoData] = useState([]);
@@ -58,7 +57,7 @@ const page = () => {
           </Link>
         </div>
 
-        <div className="w-[60%] mx-auto shadow rounded-lg border h-[55vh] relative">
+        <div className="w-[80%] mx-auto shadow rounded-lg border h-[55vh] relative">
           {graphLoading ? (
             <LoaderSpin />
           ) : (
@@ -77,7 +76,7 @@ const page = () => {
 
         <div
           id="treeWrapper"
-          className="mt-[1.4rem] shadow rounded-lg w-[60%] mx-auto  border h-[55vh] relative"
+          className="mt-[1.4rem] shadow rounded-lg w-[80%] mx-auto  border h-[55vh] relative"
         >
           {graphLoading ? (
             <LoaderSpin />
@@ -103,7 +102,7 @@ const page = () => {
           nodeRadius={100}
           margins={{ top: 2, bottom: 20, left: 50, right: 100 }}
           height={340}
-          width={700}
+          width={870}
         />
           )}
         </div>

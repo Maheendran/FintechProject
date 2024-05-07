@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import { message } from "antd";
 import axios from "axios";
 import Link from "next/link";
+
 const page = () => {
   const [fileName, setFileName] = useState("");
   const [messageApi, contextHolder] = message.useMessage();
@@ -61,11 +62,11 @@ const page = () => {
           content: "file uploaded successfully",
         });
 
-        // Reset state values
+      
         setFile(null);
         setFileName("");
 
-        // Clear input field
+     
         if (inputRef.current) {
           inputRef.current.value = "";
         }
