@@ -80,7 +80,7 @@ const page = () => {
 
   return (
     <>
-      <div className="w-full min-h-screen h-fit bg-white ">
+      <div className="w-full min-h-screen h-fit bg-white  overflow-hidden">
         <div className="w-full relative overflow-hidden">
           <Navbar />
         </div>
