@@ -53,6 +53,7 @@ const[graphLoading,setGraphLoading]=useState(true)
         {graphLoading?  <p>"loadinggg"</p>  : <ChartComponent currentData={graphOne}  />}
         </div>
         <div id="treeWrapper" className="w-fit  border mx-auto">
+       
         {graphLoading?  <p>"loadinggg"</p>  :  <Tree
             data={graphTwoData}
             nodeRadius={100}
@@ -62,7 +63,9 @@ const[graphLoading,setGraphLoading]=useState(true)
           />}
         </div>
       </div>
-{/* <div></div> */}
+
+
+
    
     </>
   );
