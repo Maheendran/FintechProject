@@ -1,7 +1,7 @@
 import React from "react";
 import LoaderSpin from "../loaderSpin/LoaderSpin";
 interface finDetailsProps {
-  finDetails?: {
+  finDetails: {
     _id: string;
     cost: number;
     charity: number;
@@ -13,17 +13,13 @@ interface finDetailsProps {
     updatedAt: Date;
     __v: number;
   }[];
-  inCompleteData?: any[];
-  headerDetail?: any;
   loading?: boolean;
 
 }
 
 const FinanceTable: React.FC<finDetailsProps> = ({
   finDetails,
-  loading,
-  inCompleteData,
-  headerDetail,
+  loading
 }) => {
   return (
     <>
@@ -59,22 +55,6 @@ const FinanceTable: React.FC<finDetailsProps> = ({
                               );
                             }
                           )}
-  {headerDetail && Object.keys(headerDetail).map(
-                            (e: any, index: number) => {
-                              if (e === "_id") {
-                                return;
-                              }
-                              return (
-                                <th
-                                  key={index}
-                                  scope="col"
-                                  className="px-6 py-3 text-start text-xs font-medium text-white uppercase"
-                                >
-                                  {e}
-                                </th>
-                              );
-                            }
-                          )}
 
                       </tr>
                     </thead>
@@ -102,7 +82,13 @@ const FinanceTable: React.FC<finDetailsProps> = ({
                             </td>
                           </tr>
                         ))}
+                      { finDetails.length==0 &&
+                        <div className="w-full h-[60vh]  border flex justify-center">
+                          <p className="text-black text-[1.4rem] m-auto">No data</p>
+                        </div>
+                        }
                     </tbody>
+                 
                   </table>
                 </div>
               </div>

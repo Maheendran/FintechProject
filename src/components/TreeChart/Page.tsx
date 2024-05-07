@@ -88,13 +88,15 @@ const ChartComponent: React.FC<ChartProps> = ({ currentData }) => {
     return () => {
       myChart.dispose();
     };
-  }, [currentData]); // Empty dependency array to run the effect only once
+  }, [currentData]); 
 
   return (
     <div
       id="main"
       style={{ width: "90%", height: "55vh", margin: "auto" }}
-    ></div>
+    >
+      
+    </div>
   );
 };
 
