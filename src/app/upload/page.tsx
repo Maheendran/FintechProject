@@ -85,7 +85,7 @@ const page = () => {
           <Navbar />
         </div>
 
-        <p className="text-[2rem]  text-neutral-500 mb-2 font-bold text-center mt-[1.4rem]">
+        <p className="text-[2rem]  text-neutral-500 mb-2 font-bold text-center mt-[1rem]">
           Upload File
         </p>
         <div className="w-fit my-[1.4rem] mx-auto flex flex-end">
@@ -151,18 +151,18 @@ const page = () => {
             </button>
           </div>
         </div>
-        {/* {errorPopup && ( */}
+        {errorPopup && (
           <div
             className="border mx-auto rounded-lg bg-red-100/50 mt-[.75rem] p-1
                  lg:w-[12%] h-fit  border-red-300 text-center"
           >
-            <p className="text-[2rem] text-red-500 font-bold my-auto">
+            <p className="text-[1.5rem] text-red-500 font-bold my-auto">
               {inCompleteData}
             </p>
-            <p className="text-[1rem] my-auto text-neutral-500">row error</p>
+            <p className="text-[0.9rem] my-auto text-neutral-500">row error</p>
           
           </div>
-        {/* )} */}
+         )} *
       </div>
     </>
   );
