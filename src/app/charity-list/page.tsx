@@ -3,11 +3,12 @@ import Navbar from '@/components/navbar/Navbar'
 import React, { useEffect, useState } from 'react'
 import { GrCaretPrevious,GrCaretNext } from "react-icons/gr";
 import axios from 'axios'
+import Link from "next/link";
 import FinanceTable from '@/components/financeTable/FinanceTable';
 const page = () => {
 
 const [currentPage, setCurrentPage] = useState(1);
-const itemsPerPage = 5;
+const itemsPerPage = 7;
 const[totalPages,setTotalPages]=useState(0)
 
 const[loading,setLoading]=useState(true)
@@ -36,8 +37,24 @@ handleGetFinData()
     setCurrentPage((currentPage)=>currentPage+value)
   }
   return (
-    <div className='w-full h-screen bg-white border relative'>
+    <div className='w-full h-screen bg-white  text-black border relative'>
         <Navbar/>
+        
+        <p className="text-[3rem] font-bold text-center">Charity list</p>
+        <div className="w-fit my-[1.4rem] mx-auto flex flex-end">
+          <Link
+            className="text-[1rem] w-fit px-4 font-bold text-end"
+            href={"/dashboard"}
+          >
+            <button className="px-4 py-2 button2 relative">Finance</button>
+          </Link>
+          <Link
+            className="text-[1rem] w-fit px-4 font-bold text-end "
+            href={"/charity-list"}
+          >
+            <button className="px-4 py-2 button2 relative">Upload file</button>
+          </Link>
+        </div>
 <FinanceTable finDetails={finDetails} loading={loading} />
 
 

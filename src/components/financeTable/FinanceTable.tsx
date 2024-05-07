@@ -1,4 +1,5 @@
 import React from "react";
+import LoaderSpin from "../loaderSpin/LoaderSpin";
 interface finDetailsProps {
   finDetails?: {
     _id: string;
@@ -24,22 +25,22 @@ const FinanceTable: React.FC<finDetailsProps> = ({
   inCompleteData,
   headerDetail,
 }) => {
-  console.log(headerDetail,inCompleteData)
   return (
     <>
-      <div className="w-[80%] h-fit mx-auto mt-[2rem] border rounded-2xl overflow-hidden">
+      <div className="w-[80%] h-fit mx-auto mt-[2rem]  rounded-lg overflow-hidden">
         {loading ? (
-          <div className="w-full h-[50vh] bg-red-300">
-            <p className="text-[2rem] text-center">Loading....</p>
+          <div className="w-full h-[60vh] relative">
+ <LoaderSpin/>
           </div>
+       
         ) : (
           <div className="flex flex-col">
             <div className="-m-1.5 overflow-x-auto">
               <div className="p-1.5 min-w-full inline-block align-middle">
                 <div className="overflow-hidden">
-                  <table className="min-w-full divide-y divide-gray-200">
+                  <table className="min-w-full divide-y ">
                     <thead>
-                      <tr>
+                      <tr className="bg-black text-white ">
                         {finDetails &&
                           finDetails.length > 0 &&
                           Object.keys(finDetails[0]).map(
@@ -51,7 +52,7 @@ const FinanceTable: React.FC<finDetailsProps> = ({
                                 <th
                                   key={index}
                                   scope="col"
-                                  className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase"
+                                  className="px-6 py-4 text-start text-xs font-medium text-white uppercase"
                                 >
                                   {e}
                                 </th>
@@ -67,7 +68,7 @@ const FinanceTable: React.FC<finDetailsProps> = ({
                                 <th
                                   key={index}
                                   scope="col"
-                                  className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase"
+                                  className="px-6 py-3 text-start text-xs font-medium text-white uppercase"
                                 >
                                   {e}
                                 </th>

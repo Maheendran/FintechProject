@@ -102,7 +102,7 @@ path.link {
 
 /* ========= */
 
-/* .button2 {
+.button2 {
 	
     transition: all 0.2s ease-in;
     overflow: hidden;
@@ -111,8 +111,8 @@ path.link {
     cursor: pointer;
     background: #e8e8e8;
     border: 1px solid #e8e8e8;
-  } */
-  /* @media only screen and (max-width: 767px) {
+  } 
+   @media only screen and (max-width: 767px) {
     .button2 {
       font-size: 1rem;
       padding: 0.5em 1.5em;
@@ -128,9 +128,7 @@ path.link {
   .button2:active {
     color: #666;
     box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
-  } */
-  
-  /* .button2:before {
+  }  .button2:before {
     content: "";
     position: absolute;
     left: 50%;
@@ -143,9 +141,9 @@ path.link {
     display: block;
     transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
     z-index: -1;
-  } */
+  } 
   
-  /* .button2:after {
+  .button2:after {
     content: "";
     position: absolute;
     left: 55%;
@@ -158,8 +156,8 @@ path.link {
     display: block;
     transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
     z-index: -1;
-  } */
-  /* .button2:hover .logouticon {
+  } 
+   .button2:hover .logouticon {
     color: #ffffff;
  
   }
@@ -167,9 +165,9 @@ path.link {
   .button2:hover {
     color: #ffffff;
     border: 1px solid #313232;
-  } */
+  } 
   
-  /* .button2:hover:before {
+  button2:hover:before {
     top: -35%;
     background-color: #313232;
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
@@ -179,7 +177,7 @@ path.link {
     top: -45%;
     background-color: #282929;
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
-  } */
+  }
   
   .conatct-bg{
     background-color: rgb(241, 241, 241);

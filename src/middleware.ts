@@ -13,16 +13,27 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL("/dashboard", request.url));
     }
 
-    if (
-      request.nextUrl.pathname.startsWith("/dashboard") ||
-      request.nextUrl.pathname.startsWith("/upload") ||
-      request.nextUrl.pathname.startsWith("/table")
-    ) {
+    if (request.nextUrl.pathname.startsWith("/dashboard") ) {
       if (!authenticated) {
         return NextResponse.redirect(new URL("/login", request.url));
       }
       return NextResponse.next();
     }
+
+    if (request.nextUrl.pathname.startsWith("/charity-list") ) {
+      if (!authenticated) {
+        return NextResponse.redirect(new URL("/login", request.url));
+      }
+      return NextResponse.next();
+    }
+    if (request.nextUrl.pathname.startsWith("/upload") ) {
+      if (!authenticated) {
+        return NextResponse.redirect(new URL("/login", request.url));
+      }
+      return NextResponse.next();
+    }
+
+
 
     return NextResponse.next();
   } catch (error) {
@@ -35,5 +46,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/login", "/dashboard", "/upload"],
+  matcher: ["/login", "/dashboard","/upload","/charity-list"],
 };
