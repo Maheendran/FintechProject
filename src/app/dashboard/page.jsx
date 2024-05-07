@@ -12,6 +12,7 @@ const page = () => {
   const [graphTwoData, setGraphTwoData] = useState([]);
   const [graphOne, setGraphOne] = useState({});
 const[graphLoading,setGraphLoading]=useState(true)
+const[tigger,setTrigger]=useState(Date())
 
   useEffect(() => {
     const handleGetFinData = async () => {
@@ -25,6 +26,7 @@ const[graphLoading,setGraphLoading]=useState(true)
       setGraphTwoData(response.data.data);
       setGraphOne(response.data.graphOne)
       setGraphLoading(false)
+      setTrigger(Date())
      }
        
       } catch (error) {
@@ -33,8 +35,8 @@ const[graphLoading,setGraphLoading]=useState(true)
       }
     };
     handleGetFinData();
-
-  });
+    
+  }, [tigger]);
 
   return (
     <>
