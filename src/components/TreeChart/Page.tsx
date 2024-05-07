@@ -93,7 +93,7 @@ const ChartComponent: React.FC<ChartProps> = ({ currentData }) => {
   return (
     <div
       id="main"
-      style={{ width: "80%", height: "400px", margin: "auto" }}
+      style={{ width: "80%", height: "50vh", margin: "auto" }}
     ></div>
   );
 };
