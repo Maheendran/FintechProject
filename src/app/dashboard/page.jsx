@@ -19,8 +19,9 @@ const[graphLoading,setGraphLoading]=useState(true)
         const response = await axios.get("/api/graph");
 
         const status=response.data.status
-
+        console.log(response.data,'response.data')
      if(status==="success"){
+      console.log(response.data,'response.data')
       setGraphTwoData(response.data.data);
       setGraphOne(response.data.graphOne)
       setGraphLoading(false)
