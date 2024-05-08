@@ -12,6 +12,7 @@ interface finDetailsProps {
     createdAt: Date;
     updatedAt: Date;
     __v: number;
+    uploader:string
   }[];
   loading?: boolean;
 
@@ -79,6 +80,9 @@ const FinanceTable: React.FC<finDetailsProps> = ({
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                               {e.date}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
+                              {e.uploader}
                             </td>
                           </tr>
                         ))}

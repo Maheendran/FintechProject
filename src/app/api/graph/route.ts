@@ -5,8 +5,15 @@ import Financial from "@/lib/models/financial.model";
 export async function GET(req: NextRequest, res: NextResponse) {
   try {
     await clientPromise();
+    const cookiesAccessToken: any = req?.cookies.get("Email");
+    const email=cookiesAccessToken?.value
 
     const graphTwo = await Financial.aggregate([
+      {
+        $match: {
+          uploader: { $regex: `^${email}$`, $options: "i" } 
+        }
+      },
       {
         $group: {
           _id: "$category",
@@ -14,6 +21,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
         },
       },
     ]);
+    console.log(graphTwo,'graphTwo')
     const totalCharityInMillion = graphTwo.reduce((total, item) => total + item.totalCharity, 0) / 1000000;
 
     const data = {
@@ -32,6 +40,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     let convertDate = new Date(parseInt(yearMonth), 1, 1);
 
     const graphOne = await Financial.aggregate([
+      {$match:{uploader:email}},
       {
         $match: {
           $expr: {
