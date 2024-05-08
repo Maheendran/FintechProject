@@ -6,113 +6,84 @@ import Link from "next/link";
 import axios from "axios";
 import ChartComponent from "@/components/TreeChart/Page";
 import LoaderSpin from "@/components/loaderSpin/LoaderSpin";
-const page = () => {
+
+const ChartWrapper = ({ graphOne }) => {
+  return <ChartComponent key={JSON.stringify(graphOne)} currentData={graphOne} />;
+};
+
+const TreeWrapper = ({ graphTwoData }) => {
+  return (
+    <Tree
+      key={JSON.stringify(graphTwoData)}
+      data={graphTwoData}
+      nodeRadius={100}
+      margins={{ top: 2, bottom: 20, left: 50, right: 100 }}
+      height={340}
+      width={870}
+    />
+  );
+};
+
+const Page = () => {
   const [graphTwoData, setGraphTwoData] = useState([]);
   const [graphOne, setGraphOne] = useState({});
   const [graphLoading, setGraphLoading] = useState(true);
-  const [tigger, setTrigger] = useState(Date());
+  const [trigger, setTrigger] = useState(Date());
 
   useEffect(() => {
     const handleGetFinData = async () => {
       try {
         const response = await axios.get("/api/graph");
-
         const status = response.data.status;
-        console.log(response.data, "response.data");
 
         if (status === "success") {
           console.log(response.data, "response.data");
           setGraphTwoData(response.data.data);
           setGraphOne(response.data.graphOne);
-     
+          setGraphLoading(false);
           setTrigger(Date());
+        } else {
+          setGraphLoading(false);
         }
-        setGraphLoading(false);
-        
       } catch (error) {
-        console.log(error);
+        console.error(error);
         setGraphLoading(false);
       }
     };
+
     handleGetFinData();
-  }, [tigger]);
+  }, [trigger]);
 
   return (
     <>
       <div className="w-full h-fit bg-white pb-[2rem] text-black relative">
         <Navbar />
-
-        <p className="text-[2rem]  text-neutral-500 font-bold text-center">
-          Finance
-        </p>
+        <p className="text-[2rem]  text-neutral-500 font-bold text-center">Finance</p>
         <div className="w-fit my-[1.4rem] mx-auto flex flex-end">
-          <Link
-            className="text-[1rem] w-fit px-4 font-bold text-end"
-            href={"/charity-list"}
-          >
+          <Link className="text-[1rem] w-fit px-4 font-bold text-end" href={"/charity-list"}>
             <button className="px-4 py-2 button2 relative">Charity list</button>
           </Link>
-          <Link
-            className="text-[1rem] w-fit px-4 font-bold text-end "
-            href={"/upload"}
-          >
+          <Link className="text-[1rem] w-fit px-4 font-bold text-end " href={"/upload"}>
             <button className="px-4 py-2 button2 relative">Upload file</button>
           </Link>
         </div>
-
         <div className="w-[80%] mx-auto shadow rounded-lg border h-[55vh] relative">
           {graphLoading ? (
             <LoaderSpin />
           ) : (
-            // <>
-            //   {graphOne?.formattedMonths.length === 0 ? (
-            //     <div className="w-full h-[60vh] border flex justify-center">
-            //       <p className="text-black text-[1.4rem] m-auto">No data</p>
-            //     </div>
-            //   ) : (
-            //     <ChartComponent currentData={graphOne} />
-            //   )}
-            <ChartComponent currentData={graphOne} />
-            // </>
+            <ChartWrapper graphOne={graphOne} />
           )}
         </div>
-
-        <div
-          id="treeWrapper"
-          className="mt-[1.4rem] shadow rounded-lg w-[80%] mx-auto  border h-[55vh] relative"
-        >
+        <div id="treeWrapper" className="mt-[1.4rem] shadow rounded-lg w-[80%] mx-auto  border h-[55vh] relative">
           {graphLoading ? (
             <LoaderSpin />
           ) : (
-
-          //   <>
-          //   {Object.keys(graphTwoData['children']).length === 0 ? (
-          //     <div className="w-full h-[60vh] border flex justify-center">
-          //       <p className="text-black text-[1rem] m-auto">No data</p>
-          //     </div>
-          //   ) : (
-          //     <Tree
-          //     data={graphTwoData}
-          //     nodeRadius={100}
-          //     margins={{ top: 2, bottom: 20, left: 50, right: 100 }}
-          //     height={340}
-          //     width={700}
-          //   />
-          //   )}
-          // </>
-          <Tree
-          data={graphTwoData}
-          nodeRadius={100}
-          margins={{ top: 2, bottom: 20, left: 50, right: 100 }}
-          height={340}
-          width={870}
-        />
+            <TreeWrapper graphTwoData={graphTwoData} />
           )}
         </div>
       </div>
-      {/* <div></div> */}
     </>
   );
 };
 
-export default page;
+export default Page;
