@@ -19,14 +19,16 @@ const page = () => {
 
         const status = response.data.status;
         console.log(response.data, "response.data");
-        
+
         if (status === "success") {
           console.log(response.data, "response.data");
           setGraphTwoData(response.data.data);
           setGraphOne(response.data.graphOne);
-          setGraphLoading(false);
+     
           setTrigger(Date());
         }
+        setGraphLoading(false);
+        
       } catch (error) {
         console.log(error);
         setGraphLoading(false);
