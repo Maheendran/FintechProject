@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { message } from "antd";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -29,6 +30,7 @@ const page = () => {
     });
   };
 
+
   const handleLoginForm: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -50,6 +52,8 @@ const page = () => {
          
             Cookies.set("Token", TokenValue, { expires: 7 });
             Cookies.set("Email", formData.email, { expires: 7 });
+            // localStorage.setItem("Token", TokenValue)
+
             messageApi.open({
                 type: "success",
                 content: "Login succesfully",
@@ -68,19 +72,13 @@ const page = () => {
      } catch (error: any) {
         
         const value=error?.response?.data
-        console.log(value,'value')
-        if(value){
-          messageApi.open({
-            type: "error",
-            content: value?.error,
-          });
-        }
-        else{
+      
+        
             messageApi.open({
                 type: "error",
-                content: 'server error',
+                content: value
               });
-        }
+        
       
       setIsLoading(false)
        console.log(error)
