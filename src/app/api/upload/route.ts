@@ -19,7 +19,9 @@ export async function POST(req: NextRequest, res: NextResponse) {
     const sheetData: any = xlsx.utils.sheet_to_json(sheet, { header: 1 });
     const tempArray = [];
     const headerLength = sheetData[0].length;
-  
+    const cookiesAccessToken: any = req?.cookies.get("Email");
+    const email=cookiesAccessToken?.value
+
     const promises = sheetData.slice(1)?.map(async (row: any) => {
       if (row.length !== headerLength) {
           tempArray.push(row);
@@ -28,8 +30,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
               const dateValue = parseInt(row[5]);
               if (isNaN(dateValue)) {
-
-                console.log(row,dateValue,'dateValue---------------------------')
                   throw new Error('Invalid date value',);
               }
   
@@ -47,9 +47,11 @@ export async function POST(req: NextRequest, res: NextResponse) {
                   profit: row[3],
                   category: row[4],
                   date: formattedDate,
+                  uploader:email
               };
-  
+             
               const data = new Financial(documentObject);
+             console.log(data,'data')
               await data.save();
           } catch (error) {
               console.error("Error processing row:", error);
@@ -57,6 +59,10 @@ export async function POST(req: NextRequest, res: NextResponse) {
       }
   });
   
+
+
+
+
   try {
       await Promise.all(promises);
       console.log("All documents saved successfully.");
