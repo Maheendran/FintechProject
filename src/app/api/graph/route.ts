@@ -5,7 +5,7 @@ import Financial from "@/lib/models/financial.model";
 export async function GET(req: NextRequest, res: NextResponse) {
   try {
     await clientPromise();
-    const cookiesAccessToken: any = req?.cookies.get("Email");
+    const cookiesAccessToken: any = req?.cookies.get("Email")||"";
     const email=cookiesAccessToken?.value
 
     const graphTwo = await Financial.aggregate([
@@ -82,6 +82,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const graphOneData = {
       formattedMonths, totalProfits, totalRevenues
     };
+    console.log(graphOneData,'graphOneData-------------------')
 
     const customResponse = NextResponse.json({ data, status: "success", graphOne: graphOneData });
     customResponse.headers.set('Cache-Control', 'no-store');
