@@ -19,6 +19,7 @@ const page = () => {
 
         const status = response.data.status;
         console.log(response.data, "response.data");
+        
         if (status === "success") {
           console.log(response.data, "response.data");
           setGraphTwoData(response.data.data);

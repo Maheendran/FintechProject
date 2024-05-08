@@ -20,37 +20,50 @@ export async function POST(req: NextRequest, res: NextResponse) {
     const tempArray = [];
     const headerLength = sheetData[0].length;
   
-    const promises = sheetData.map(async (row:any) => {
+    const promises = sheetData.slice(1)?.map(async (row: any) => {
       if (row.length !== headerLength) {
-        tempArray.push(row);
+          tempArray.push(row);
       } else {
-        const date = new Date((parseInt(row[5]) - 25569) * 86400 * 1000);
-        const year = date.getFullYear();
-        const month = date.getMonth() + 1;
-        const day = date.getDate();
-        const addLeadingZero = (num: number): string => {return num < 10 ? `0${num}` : `${num}`;};
-        const formattedDate = `${year}-${addLeadingZero(month)}-${addLeadingZero(day)}`;
-   
-        const documentObject = {
-          cost: row[0],
-          charity: row[1],
-          revenue: row[2],
-          profit: row[3],
-          category: row[4],
-          date: formattedDate,
-     
-        };
-    
-        try {
-          const data = new Financial(documentObject); 
-          await data.save();
-        } catch (error) {
-          console.error("Error saving document:", error);
-        }
+          try {
+
+              const dateValue = parseInt(row[5]);
+              if (isNaN(dateValue)) {
+
+                console.log(row,dateValue,'dateValue---------------------------')
+                  throw new Error('Invalid date value',);
+              }
+  
+              const date = new Date((dateValue - 25569) * 86400 * 1000);
+              const year = date.getFullYear();
+              const month = date.getMonth() + 1;
+              const day = date.getDate();
+              const addLeadingZero = (num: number): string => { return num < 10 ? `0${num}` : `${num}`; };
+              const formattedDate = `${year}-${addLeadingZero(month)}-${addLeadingZero(day)}`;
+  
+              const documentObject = {
+                  cost: row[0],
+                  charity: row[1],
+                  revenue: row[2],
+                  profit: row[3],
+                  category: row[4],
+                  date: formattedDate,
+              };
+  
+              const data = new Financial(documentObject);
+              await data.save();
+          } catch (error) {
+              console.error("Error processing row:", error);
+          }
       }
-    });
-    
-    await Promise.all(promises);
+  });
+  
+  try {
+      await Promise.all(promises);
+      console.log("All documents saved successfully.");
+  } catch (error) {
+      console.error("Error saving documents:", error);
+  }
+  
     
 
 
