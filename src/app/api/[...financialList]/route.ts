@@ -15,6 +15,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
 const totalLength= await Financial.countDocuments()
 // const cookiesAccessToken: any = req?.cookies.get("Email");
 // cookiesAccessToken?.value
+
+
+
 const email='eve.holt@reqres.in'
     const data = await Financial.find(
       {uploader: { $regex: `^${email}$`, $options: "i" } },
