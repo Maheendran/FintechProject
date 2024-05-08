@@ -13,8 +13,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const itemsPerPage = parseInt(perPage as string);
     const startIndex = (pageNumber - 1) * itemsPerPage;
 const totalLength= await Financial.countDocuments()
-const cookiesAccessToken: any = req?.cookies.get("Email");
-const email=cookiesAccessToken?.value
+// const cookiesAccessToken: any = req?.cookies.get("Email");
+// cookiesAccessToken?.value
+const email='eve.holt@reqres.in'
     const data = await Financial.find(
       {uploader: { $regex: `^${email}$`, $options: "i" } },
       {
