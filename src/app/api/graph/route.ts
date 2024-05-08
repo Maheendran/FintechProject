@@ -1,12 +1,37 @@
 import { NextRequest, NextResponse } from "next/server";
 import clientPromise from "@/lib/mongoose";
 import Financial from "@/lib/models/financial.model";
+import { cookies } from 'next/headers'
 
+// async function getCookieData() {
+//   return new Promise((resolve) =>
+//    (function(){
+//     resolve(cookies().getAll())
+//    })()
+//   )
+// }
 export async function GET(req: NextRequest, res: NextResponse) {
   try {
     await clientPromise();
-    const cookiesAccessToken: any = req?.cookies.get("Email")||"";
-    const email=cookiesAccessToken?.value
+
+    // const cookieData:any = await getCookieData()
+//     if(cookieData){
+//       const email =await cookieData;
+//       const result=email['Email']?.value
+      
+// console.log(result,'ssssssssss')
+//     }
+ 
+    // const cookiesAccessToken: any =  cookies().get("Email");
+   
+    // const cookiesAccessToken: any = req?.cookies.get("Email")||"";
+    const cookiess= cookies().get('Email')
+    let email;
+    if(cookiess){
+       email=cookiess?.value
+    }
+    console.log(email,'cookiesscookiess')
+   
 
     const graphTwo = await Financial.aggregate([
       {
@@ -21,7 +46,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
         },
       },
     ]);
-    console.log(graphTwo,'graphTwo')
     const totalCharityInMillion = graphTwo.reduce((total, item) => total + item.totalCharity, 0) / 1000000;
 
     const data = {
@@ -82,7 +106,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const graphOneData = {
       formattedMonths, totalProfits, totalRevenues
     };
-    console.log(graphOneData,'graphOneData-------------------')
 
     const customResponse = NextResponse.json({ data, status: "success", graphOne: graphOneData });
     customResponse.headers.set('Cache-Control', 'no-store');
