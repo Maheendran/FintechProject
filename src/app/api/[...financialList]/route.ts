@@ -13,8 +13,10 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const itemsPerPage = parseInt(perPage as string);
     const startIndex = (pageNumber - 1) * itemsPerPage;
 const totalLength= await Financial.countDocuments()
+const cookiesAccessToken: any = req?.cookies.get("Email");
+const email=cookiesAccessToken?.value
     const data = await Financial.find(
-      {},
+      {uploader: { $regex: `^${email}$`, $options: "i" } },
       {
         updatedAt: 0,
         createdAt: 0,
@@ -28,9 +30,7 @@ const totalLength= await Financial.countDocuments()
       { message: "date fetched successfully",totalLength ,data: data, status: "success" },
       { status: 200 }
     );
-    // const pageNumber = parseInt(page as string);
-    // const itemsPerPage = parseInt(perPage as string);
-    // const startIndex = (pageNumber - 1) * itemsPerPage;
+ 
   } catch (error) {
     console.error(error);
     return NextResponse.json("Server error");
